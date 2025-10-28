@@ -48,3 +48,8 @@ export async function fetchNoteById(id: string): Promise<Note> {
   const res = await axios.get<Note>(`/notes/${id}`, options);
   return res.data;
 }
+
+export async function fetchNoteByTag(tag: string): Promise<Note> {
+  const res = await axios.get<Note>(`/notes/${tag}`, options);
+  return res.data;
+}
