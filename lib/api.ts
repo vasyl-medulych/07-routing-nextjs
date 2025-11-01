@@ -24,13 +24,21 @@ interface NewNote {
 
 export async function fetchNotes(
   query: string,
-  page: number
+  page: number,
+  tag?: string
 ): Promise<FetchNotesProps> {
   const perPage = 12;
-  const res = await axios.get<FetchNotesProps>(
-    `notes?search=${query}&page=${page}&perPage=${perPage}`,
-    options
-  );
+
+  const res = await axios.get<FetchNotesProps>("notes", {
+    ...options,
+    params: {
+      search: query,
+      page,
+      perPage,
+      tag,
+    },
+  });
+  console.log(res.data);
   return res.data;
 }
 
@@ -46,10 +54,5 @@ export async function deleteNote(id: string): Promise<Note> {
 
 export async function fetchNoteById(id: string): Promise<Note> {
   const res = await axios.get<Note>(`/notes/${id}`, options);
-  return res.data;
-}
-
-export async function fetchNoteByTag(tag: string): Promise<Note> {
-  const res = await axios.get<Note>(`/notes/${tag}`, options);
   return res.data;
 }
