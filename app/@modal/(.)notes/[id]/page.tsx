@@ -22,7 +22,7 @@ const NoteModal = async ({ params }: NoteModalProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotePreviewClient noteId={noteId} />
+      <NotePreviewClient />
     </HydrationBoundary>
   );
 };
