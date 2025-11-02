@@ -38,7 +38,7 @@ export async function fetchNotes(
       tag,
     },
   });
-  console.log(res.data);
+
   return res.data;
 }
 

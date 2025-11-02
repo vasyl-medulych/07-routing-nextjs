@@ -7,7 +7,7 @@ import {
 import NotesClient from "./Notes.client";
 
 interface NotesProps {
-  params: { slug?: string[] };
+  params: Promise<{ slug: string[] }>;
 }
 
 export default async function Notes({ params }: NotesProps) {
